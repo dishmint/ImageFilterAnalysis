@@ -24,7 +24,7 @@ $DefaultTestFilters = {
 	(ImageEffect[#1, "Embossing"]&) -> "Embossing"
 };
 
-(* TODO: TestFilters should return a results object *)
+(* TODO: #1 TestFilters should return a results object *)
 
 Options[TestFilters] = {
 	"Filters" -> Automatic
