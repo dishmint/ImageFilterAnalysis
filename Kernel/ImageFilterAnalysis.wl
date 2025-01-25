@@ -19,10 +19,12 @@ $DefaultTestFilters = {
 	(MaxFilter[#1, 1]&) -> "Max",
 	(MeanFilter[#1, 1]&) -> "Mean",
 	(MedianFilter[#1, 1]&) -> "Median",
-	(CommonestFilter[#1, 1]&) -> "Commonest",
+	(CommonestFilter[#1, 1]&) -> "Commonest", (* FIXME: Image updates to a point then changes only appear when starting/stopping the process*)
 	(ImageEffect[#1, "Charcoal"]&) -> "Charcoal",
 	(ImageEffect[#1, "Embossing"]&) -> "Embossing"
 };
+
+(* TODO: TestFilters should return a results object *)
 
 Options[TestFilters] = {
 	"Filters" -> Automatic
