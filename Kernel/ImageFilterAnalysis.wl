@@ -1,9 +1,8 @@
 BeginPackage["FaizonZaman`ImageFilterAnalysis`"]
 
-(* Declare your package's public symbols here. *)
-
 TestFilters::usage = "TestFilters[image] returns a gui for exploring different filters"
 $DefaultTestFilters::usage = "$DefaultTestFilters returns a list of the available filters"
+ImageFilterAnalysisData::usage = "ImageFilterAnalysisData contains analysis results"
 
 Begin["`Private`"]
 
@@ -44,6 +43,7 @@ TestFilters[testImage_Image, opts:OptionsPattern[{TestFilters}]] :=
 	DynamicModule[
 		{
 			toggle = False, tlabel, source = testImage, startEntropy, frame = 0, image, filter, data = {},
+			msg = "",
 			filters = Replace[OptionValue["Filters"], Automatic -> $DefaultTestFilters]
 		},
 		
@@ -57,11 +57,20 @@ TestFilters[testImage_Image, opts:OptionsPattern[{TestFilters}]] :=
 					Row[
 						{
 							Panel[
-								Row[
+								Column[
 									{
+										Row[
+											{
+												Style["Select Filter", Bold],": ",
+												PopupMenu[
+													Dynamic[filter],
+													filters
+												]
+											}
+										],
 										ButtonBar[
 											{
-												Dynamic[tlabel[toggle]] :> (toggle //= Not),
+												Dynamic[tlabel[toggle]] :> (msg="";toggle //= Not),
 												"Reset" :> (frame = 0;image = source),
 												"Bookmark" :> (
 													AppendTo[data,
@@ -70,27 +79,39 @@ TestFilters[testImage_Image, opts:OptionsPattern[{TestFilters}]] :=
 															"Processed" -> image,
 															"Filter" -> Hold[Evaluate @ filter],
 															"Frames" -> frame,
-															"Entropy" -> <|"Start" -> startEntropy, "End" -> FilteredEntropy[image]|>
+															ExtendedKey["Entropy","Start"] -> startEntropy, 
+															ExtendedKey["Entropy", "End"] -> FilteredEntropy[image]
 														|>
 													];
 												),
-												"Data" :> (CellPrint[{data}];),
-												"Dataset" :> (CellPrint[Dataset[data]];)
+
+												"Save" :> (With[
+													{sym= Unique["ifaResult"]},
+													msg = Row[{Style["\[Checkmark]", Darker[Green]], " Saved to ", ToString[sym]}];
+													sym = ImageFilterAnalysisData[<|"Source" -> source, "Filters"-> filters, "Data" -> ToTabular[data]|>];
+												];)
 											}
-										],
-										PopupMenu[
-											Dynamic[filter],
-											filters
 										]
 									}
 								]
 							],
 							" ",
-							Row[{"Frame: ", Dynamic[frame]}]
+							Column[
+								{
+									"",
+									Dynamic[msg],
+									""
+								}
+							]
 						}
 					]
 					,
-					Dynamic[Magnify[image, 1.96]]
+					Column[
+						{
+							Row[{"Frame: ", Dynamic[frame]}],
+							Dynamic[Magnify[image, 1.96]]
+						}
+					]
 				}
 			]
 			,
@@ -106,6 +127,40 @@ TestFilters[testImage_Image, opts:OptionsPattern[{TestFilters}]] :=
 			]
 		]
 	];
+
+ImageFilterAnalysisDataAscQ[asc_?AssociationQ] :=
+	AllTrue[
+		{"Source", "Filters", "Data"},
+		KeyExistsQ[asc, #]&
+	]
+
+ImageFilterAnalysisDataAscQ[_] = False;
+
+$thumbnail[i_Image] := $thumbnail[i] = Graphics[{Inset[i]}, ImageSize -> Dynamic[
+	{(*this seems to be the standard icon size*)Automatic, 3.5 CurrentValue[
+	"FontCapHeight"] / AbsoluteCurrentValue[Magnification]}]];
+
+
+ImageFilterAnalysisData /: MakeBoxes[obj : ImageFilterAnalysisData[asc_?ImageFilterAnalysisDataAscQ], form : (StandardForm | TraditionalForm)] :=
+	Module[{above, below},
+		above =
+			{
+				{BoxForm`SummaryItem[{"MeanFrames: ", AggregateRows[asc["Data"], "MeanFrames" -> Function[Mean[#Frames]]] // Normal/*Values/*Flatten/*First}], SpanFromLeft},
+				{BoxForm`SummaryItem[{"Filters: ", Length[asc["Filters"]]}]}
+			};
+		below ={};
+		BoxForm`ArrangeSummaryBox[
+			ImageFilterAnalysisData,
+			obj,
+			$thumbnail[asc["Source"]],
+			above,
+			below,
+			form,
+			"Interpretable" -> Automatic
+		]
+	];
+
+ImageFilterAnalysisData[asc_?ImageFilterAnalysisDataAscQ][key_] := Lookup[asc,key]
 
 End[] (* End `Private` *)
 
