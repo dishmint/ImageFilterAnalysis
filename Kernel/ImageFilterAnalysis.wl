@@ -10,7 +10,7 @@ FilteredEntropy[image_Image] :=
 	Function[GradientFilter[#, 1]] /* ImageAdjust /* Function[ImageMeasurements[#, "Entropy"]] @ image
 
 $DefaultTestFilters = {
-	(Blur[#1, 1]&) -> "Blur",
+	(Blur[#1, 2]&) -> "Blur",
 	(Sharpen[#1, 1]&) -> "Sharpen",
 	(ImageAdjust[GaussianFilter[#1, 1, 1]]&) -> "Gaussian",
 	(LaplacianFilter[#1, 1]&) -> "Laplacian",
