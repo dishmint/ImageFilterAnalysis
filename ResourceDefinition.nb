@@ -570,7 +570,7 @@ Cell[BoxData[
  RowBox[{"Quit", "[", "]"}]], "Input", "Excluded",
  TaggingRules->{},
  CellChangeTimes->{{3.9467649778700047`*^9, 3.946764979833617*^9}},
- CellLabel->"In[1]:=",
+ CellLabel->"In[4]:=",
  CellID->332743059,ExpressionUUID->"116ba612-8439-40b2-8b94-3d37b7d79824"],
 
 Cell[CellGroupData[{
@@ -648,10 +648,11 @@ Cell["Basic Examples", "Subsection",
  TaggingRules->{},
  CellID->462042388,ExpressionUUID->"28b74be2-26c5-4a9d-8838-017daf1e9fae"],
 
-Cell["Interactively run filters. ...describe....", "Text",
+Cell["Interactively run various filters", "Text",
  TaggingRules->{},
  CellChangeTimes->{{3.9468358492170877`*^9, 3.946835852573235*^9}, {
-  3.947794597308798*^9, 3.9477946570030107`*^9}},
+  3.947794597308798*^9, 3.9477946570030107`*^9}, {3.9495135641065607`*^9, 
+  3.949513572918131*^9}},
  CellTags->"DefaultContent",
  CellID->319073343,ExpressionUUID->"a3196440-02c4-43fb-b2cf-0972cd4c54e0"],
 
@@ -19826,8 +19827,8 @@ Cell["Additional information about limitations, issues, etc.", "Text",
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{935, 1026},
-WindowMargins->{{Automatic, 1}, {Automatic, -180}},
+WindowSize->{618, 846},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
 WindowTitle->"ImageFilterAnalysis | Definition Notebook",
 DockedCells->{
   Cell[
