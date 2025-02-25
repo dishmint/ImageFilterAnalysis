@@ -648,9 +648,10 @@ Cell["Basic Examples", "Subsection",
  TaggingRules->{},
  CellID->462042388,ExpressionUUID->"28b74be2-26c5-4a9d-8838-017daf1e9fae"],
 
-Cell["Evaluate the GUI:", "Text",
+Cell["Interactively run filters. ...describe....", "Text",
  TaggingRules->{},
- CellChangeTimes->{{3.9468358492170877`*^9, 3.946835852573235*^9}},
+ CellChangeTimes->{{3.9468358492170877`*^9, 3.946835852573235*^9}, {
+  3.947794597308798*^9, 3.9477946570030107`*^9}},
  CellTags->"DefaultContent",
  CellID->319073343,ExpressionUUID->"a3196440-02c4-43fb-b2cf-0972cd4c54e0"],
 
@@ -19825,8 +19826,8 @@ Cell["Additional information about limitations, issues, etc.", "Text",
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{720, 846},
-WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+WindowSize->{935, 1026},
+WindowMargins->{{Automatic, 1}, {Automatic, -180}},
 WindowTitle->"ImageFilterAnalysis | Definition Notebook",
 DockedCells->{
   Cell[

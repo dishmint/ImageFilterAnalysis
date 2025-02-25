@@ -1,6 +1,7 @@
 BeginPackage["FaizonZaman`ImageFilterAnalysis`"]
 
 TestFilters::usage = "TestFilters[image] returns a gui for exploring different filters"
+RunImageFilter::usage="RunImageFilter[filter, image] repeated applies filter to image until a difference threshold is reached.\nRunImageFilter[filter] represents an operator form that can be applied to an Image."
 $DefaultTestFilters::usage = "$DefaultTestFilters returns a list of the available filters"
 ImageFilterAnalysisData::usage = "ImageFilterAnalysisData contains analysis results"
 
@@ -11,14 +12,16 @@ FilteredEntropy[image_Image] :=
 
 $DefaultTestFilters = {
 	(Blur[#1, 2]&) -> "Blur",
-	(Sharpen[#1, 1]&) -> "Sharpen",
-	(ImageAdjust[GaussianFilter[#1, 1, 1]]&) -> "Gaussian",
-	(LaplacianFilter[#1, 1]&) -> "Laplacian",
-	(MinFilter[#1, 1]&) -> "Min",
-	(MaxFilter[#1, 1]&) -> "Max",
-	(MeanFilter[#1, 1]&) -> "Mean",
-	(MedianFilter[#1, 1]&) -> "Median",
-	(CommonestFilter[#1, 1]&) -> "Commonest", (* FIXME: Image updates to a point then changes only appear when starting/stopping the process*)
+	(Sharpen[#1, 2]&) -> "Sharpen",
+	(ImageAdjust[GaussianFilter[#1,2]]&) -> "Gaussian",
+	(LaplacianFilter[#1, 2]&) -> "Laplacian",
+	(LaplacianGaussianFilter[#1, 2]&) -> "LaplacianGaussian",
+	(MinFilter[#1, 2]&) -> "Min",
+	(MaxFilter[#1, 2]&) -> "Max",
+	(MeanFilter[#1, 2]&) -> "Mean",
+	(MedianFilter[#1, 2]&) -> "Median",
+	(CommonestFilter[#1, 2]&) -> "Commonest", (* FIXME: Image updates to a point then changes only appear when starting/stopping the process*)
+	(ImageAdjust[GradientFilter[#1, 2]]&) -> "GradientAdjusted", (* FIXME: Image updates to a point then changes only appear when starting/stopping the process*)
 	(ImageEffect[#1, "Charcoal"]&) -> "Charcoal",
 	(ImageEffect[#1, "Embossing"]&) -> "Embossing"
 };
@@ -44,7 +47,7 @@ TestFilters[testImage_Image, opts:OptionsPattern[{TestFilters}]] :=
 		{
 			toggle = False, tlabel, source = testImage, startEntropy, frame = 0, image, filter, data = {},
 			msg = "",
-			filters = Replace[OptionValue["Filters"], Automatic -> $DefaultTestFilters]
+			filters = Replace[OptionValue["Filters"], {Automatic -> $DefaultTestFilters, {All,userFilters_} :> Flatten[{$DefaultTestFilters, userFilters}]}]
 		},
 		
 		tlabel[True] = "Stop";
@@ -117,16 +120,62 @@ TestFilters[testImage_Image, opts:OptionsPattern[{TestFilters}]] :=
 			,
 			If[toggle,
 				frame++;
-				With[{res = filter[image]},
-					If[image != res,
-						image = res
-						,
+				With[
+					{res = filter[image]},
+					(* If FixedPoint can reliably terminate on cycles, then the following code could be refactored to use FixedPoint. *)
+					If[
+						image != res,
+						(* [^] IF the previous image and the current image are different *)
+						image = res,
+						(* [^] Replace the previous image with the current image *)
 						toggle = False
+						(* [^] If the images are the same, stop running *)
 					]
 				]
 			]
 		]
 	];
+
+
+ImageEntropyDifference[image1_, image2_] := Block[
+  {
+   eA = ImageMeasurements[image1, "Entropy"],
+   eB = ImageMeasurements[image2, "Entropy"]
+   },
+  Abs[eB - eA]
+  ]
+
+Options[RunImageFilter] = {
+	"DifferenceThreshold" -> Automatic
+};
+
+(* RunImageFilter[filter_Function][img_Image]:=
+	RunImageFilter[filter, img] *)
+
+RunImageFilter[filter_, image_Image, opts:OptionsPattern[RunImageFilter]]:= Block[
+		{
+			frameCount=0,
+			source = image,
+			threshold=Replace[OptionValue["DifferenceThreshold"],Automatic-> 0.01],
+			res, first, last,
+			data
+		},
+		res=NestWhileList[(frameCount++; filter[#]) &, image, Function[ImageEntropyDifference[#1, #2]] /* (Not@*LessThan[threshold]), 2];
+		{first,last} = Comap[{First,Last}][res];
+		data = <|
+					"Source" -> first,
+					"Processed" -> last,
+					"Filter" -> Hold[Evaluate @ filter],
+					"Frames" -> frameCount,
+					"FrameList" -> Iconize[res,"FrameList"],
+					ExtendedKey["Entropy","Start"] -> FilteredEntropy[first], 
+					ExtendedKey["Entropy", "End"] -> FilteredEntropy[last]
+				|>;
+				
+		ImageFilterAnalysisData[<|"Source" -> image,"Filters" -> filter,"Data" -> ToTabular[{data}]|>]
+	]
+
+
 
 ImageFilterAnalysisDataAscQ[asc_?AssociationQ] :=
 	AllTrue[
@@ -160,6 +209,7 @@ ImageFilterAnalysisData /: MakeBoxes[obj : ImageFilterAnalysisData[asc_?ImageFil
 		]
 	];
 
+ImageFilterAnalysisData[asc_?ImageFilterAnalysisDataAscQ]["Properties"] = {"Source","Filters","Data"};
 ImageFilterAnalysisData[asc_?ImageFilterAnalysisDataAscQ][key_] := Lookup[asc,key]
 
 End[] (* End `Private` *)
