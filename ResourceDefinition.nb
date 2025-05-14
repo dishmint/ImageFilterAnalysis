@@ -19814,7 +19814,7 @@ that are otherwise beyond the scope of the paclet documentation.",
  CellTags->{"Author Notes", "TemplateCellGroup"},
  CellID->951557313,ExpressionUUID->"4dfeff69-b12b-44e1-98ee-b22d37925773"],
 
-Cell["Additional information about limitations, issues, etc.", "Text",
+Cell["See the Github repo for known issues / planned features.", "Text",
  TaggingRules->{},
  CellEventActions->{Inherited, {"KeyDown", "\t"} :> Replace[SelectionMove[
        SelectedNotebook[], After, Cell]; NotebookFind[
@@ -19822,13 +19822,14 @@ Cell["Additional information about limitations, issues, etc.", "Text",
        WrapAround -> True], Blank[NotebookSelection] :> SelectionMove[
        SelectedNotebook[], All, CellContents, AutoScroll -> True]], 
    PassEventsDown -> False, PassEventsUp -> False},
+ CellChangeTimes->{{3.9561707265355988`*^9, 3.956170744953171*^9}},
  CellTags->{"DefaultContent", "TabNext"},
  CellID->908162033,ExpressionUUID->"591c8493-8b7f-4a78-a525-823e97e30353"]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{618, 846},
-WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+WindowSize->{1440, 846},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 WindowTitle->"ImageFilterAnalysis | Definition Notebook",
 DockedCells->{
   Cell[
@@ -19888,7 +19889,7 @@ Fu6DuJJG2H9mK2QZ3X1Y8rjKVdsLU11Qbnfn/Mae/TiO1RZHs2bny+6Vwq5Sfi8TnHKi+1+K4NOh"]\
   "AutoUpdate" -> True},
 CreateCellID->True,
 DynamicEvaluationTimeout->60,
-FrontEndVersion->"14.2 for Mac OS X ARM (64-bit) (December 26, 2024)",
+FrontEndVersion->"14.2 for Mac OS X ARM (64-bit) (March 16, 2025)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[StyleDefinitions -> "Default.nb"]], 
@@ -27724,7 +27725,7 @@ GRPf1sw3cDj8VSOm/5G9w5vAHXKt3IZQ/0HDoQHBFwFFwBcEHxR9zQlGcP3o
    Cell[
     StyleData["AttachedMessage"], Deletable -> True, 
     CellMargins -> {{60, 40}, {15, 5}}]}, Visible -> False, FrontEndVersion -> 
-  "14.2 for Mac OS X ARM (64-bit) (December 26, 2024)", StyleDefinitions -> 
+  "14.2 for Mac OS X ARM (64-bit) (March 16, 2025)", StyleDefinitions -> 
   "PrivateStylesheetFormatting.nb"],
 ExpressionUUID->"9b0ba472-6795-4086-a177-4ff2a5dee9b5"
 ]
