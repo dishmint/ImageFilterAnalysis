@@ -1,0 +1,358 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     13697,        348]
+NotebookOptionsPosition[     10035,        269]
+NotebookOutlinePosition[     12454,        328]
+CellTagsIndexPosition[     12369,        323]
+WindowTitle->RunImageFilter
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {GridBox[{
+      {
+       ItemBox[Cell[BoxData[
+         RowBox[{
+          TemplateBox[{12},
+           "Spacer1"], Cell[
+          "FAIZON ZAMAN/ IMAGE FILTER ANALYSIS SYMBOL", "PacletNameCell",
+           TextAlignment->Center,ExpressionUUID->
+           "4916e006-780a-4819-8cf2-f22ec9739d6f"], 
+          TemplateBox[{8},
+           "Spacer1"]}]],
+         TextAlignment->Center,ExpressionUUID->
+         "8488e619-cb07-4215-bbd6-f7cd419a570d"],
+        Background->RGBColor[0.490196, 0.576471, 0.690196],
+        ItemSize->Full], ""}
+     },
+     GridBoxAlignment->{"Rows" -> {{Center}}},
+     GridBoxItemSize->{"Columns" -> {Full, 
+         Scaled[0.02]}, "Rows" -> {{2.5}}}], Cell[TextData[Cell[BoxData[
+     TagBox[
+      ActionMenuBox[
+       FrameBox[Cell[TextData[{
+         "URL",
+         " ",
+         Cell[BoxData[
+          GraphicsBox[
+           {GrayLevel[0.66667], Thickness[0.13], 
+            LineBox[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]},
+           AspectRatio->1,
+           ImageSize->20,
+           PlotRange->{{-3, 4}, {-1, 1}}]],ExpressionUUID->
+          "debb9aa2-d92d-45d9-8293-a58731e65e0d"]
+        }],ExpressionUUID->"626ac8e1-06b9-449d-ad32-3b798aace6ed"],
+        StripOnInput->False],{
+       "\"FaizonZaman/ImageFilterAnalysis/ref/RunImageFilter\"" :> None, 
+        "\"Copy Wolfram Documentation Center URL\"" :> 
+        CopyToClipboard["FaizonZaman/ImageFilterAnalysis/ref/RunImageFilter"],
+         Delimiter, "\"Copy web URL\"" :> 
+        Module[{DocumentationSearch`Private`nb$}, 
+          DocumentationSearch`Private`nb$ = 
+           NotebookPut[
+            Notebook[{
+              Cell[BoxData[
+                MakeBoxes[
+                 Hyperlink[
+                  "http://reference.wolfram.com/language/FaizonZaman/\
+ImageFilterAnalysis/ref/RunImageFilter.html"], StandardForm]], "Input", 
+                TextClipboardType -> "PlainText"]}, Visible -> False]]; 
+          SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+          FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+          NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+        "\"Go to web URL\"" :> 
+        FrontEndExecute[{
+          NotebookLocate[{
+            URL[If[TrueQ[False], 
+                "http://reference.wolfram.com/system-modeler/", 
+                "http://reference.wolfram.com/language/"] <> 
+              "FaizonZaman/ImageFilterAnalysis/ref/RunImageFilter" <> 
+              ".html"], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"],
+      MouseAppearanceTag["LinkHand"]]],
+     LineSpacing->{1.4, 0},ExpressionUUID->
+     "8d390cb2-2786-49a3-a254-62f53ed4f386"]], "AnchorBar",
+     CacheGraphics->False,ExpressionUUID->
+     "13a067d2-cf16-4f74-a304-2a638fd058b5"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1,ExpressionUUID->"7e06cf55-0e47-4ab4-a0bf-de647b33c81f"],
+
+Cell["FaizonZaman`ImageFilterAnalysis`", "ContextNameCell",ExpressionUUID->"dcd3448d-d07f-4641-88bf-d3c9862062f9"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[GridBox[{
+   {Cell[TextData[{
+     Cell[
+     "RunImageFilter", "ObjectName",ExpressionUUID->
+      "8b4f5da2-8148-457a-9164-0c2ec240780c"],
+     Cell[BoxData[
+      TemplateBox[{8},
+       "Spacer1"]],ExpressionUUID->"688a03a2-d9bf-4bd0-96e9-5acd75e0edd9"],
+     Cell[BoxData[
+     ""], "ObjectNameTranslation",ExpressionUUID->
+      "57a1a701-b406-4e3a-90bc-52362c37573a"]
+    }],ExpressionUUID->"72bf18f2-588e-4300-827c-22e067ad560d"], 
+    "\[SpanFromLeft]"}
+  }]], "ObjectNameGrid",ExpressionUUID->"310b77b8-0af2-4c3f-9371-\
+616e7c614fdc"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     "Run",
+     Cell[BoxData[
+      TemplateBox[{
+        Cell[
+         TextData["Image"]], "paclet:ref/Image"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      FontFamily->"Source Sans Pro",ExpressionUUID->
+      "f37271ed-721a-4aea-b1ee-6204f8cbf1e8"],
+     "Filter[filter,image]\[LineSeparator]repeated applies ",
+     Cell[BoxData[
+      StyleBox["filter", "TI"]], "InlineFormula",
+      FontFamily->"Source Sans Pro",ExpressionUUID->
+      "4c6532ed-e3f7-46d3-8ee0-d97359a33ca8"],
+     " to ",
+     Cell[BoxData[
+      StyleBox["image", "TI"]], "InlineFormula",
+      FontFamily->"Source Sans Pro",ExpressionUUID->
+      "8640a5c5-fcb5-4d3a-af89-0a8999010504"],
+     " until a difference threshold is reached. "
+    }],ExpressionUUID->"acca46ea-5f8e-49dd-87a0-e7fe40c3fb43"]},
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{
+       TemplateBox[{
+         Cell[
+          TextData["RunImageFilter"]], 
+         "paclet:FaizonZamanImageFilterAnalysis/ref/RunImageFilter", 
+         "FaizonZamanImageFilterAnalysis Package Symbol"},
+        "PackageLink",
+        BaseStyle->"InlineFormula"], "[", 
+       StyleBox["filter", "TI"], "]"}]], "InlineFormula",
+      FontFamily->"Source Sans Pro",ExpressionUUID->
+      "4a845ff1-62d9-411d-bde4-152ff65e0daf"],
+     "\[LineSeparator]represents an operator form that can be applied to an \
+Image."
+    }],ExpressionUUID->"a36d8861-55a0-40ec-9285-d9ab0d10ec69"]}
+  }]], "Usage",
+ CellID->1750076215,ExpressionUUID->"347cfc55-d72c-4d72-8756-fedd2444c87e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    DynamicBox[ToBoxes[
+      If[
+       MatchQ[
+        CurrentValue[
+         EvaluationNotebook[], {TaggingRules, "Openers", "NotesSection"}, 
+         Closed], 
+        Alternatives[Open, True]], 
+       Style[
+        Graphics[{
+          Thickness[0.18], 
+          RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+          Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+         PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+        0.68 Inherited], 
+       Rotate[
+        Style[
+         Graphics[{
+           Thickness[0.18], 
+           RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+           Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+          PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+         0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]],
+     ImageSizeCache->{
+      13.600000000000001`, {-0.1685058593749993, 13.768505859375}}]],
+    ExpressionUUID->"a0a58728-d396-4920-947f-defe16f07a99"],
+   Cell[BoxData[
+    TemplateBox[{1},
+     "Spacer1"]],ExpressionUUID->"a6ffc564-4954-4331-9d3f-642ab05f0453"],
+   "Details and Options"
+  }], "NotesFrameText",ExpressionUUID->"6425669e-b958-4def-a4a1-ac47ef6a1c02"],
+  Appearance->{Automatic, None, "Normal", Automatic},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->
+   "Preemptive"]],ExpressionUUID->"a7ce1942-3128-41ec-8847-7fa0da33941f"]], \
+"NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CacheGraphics->False,
+ CellID->357822608,ExpressionUUID->"c4eed1bf-b56f-439d-a294-4047a27b3c61"],
+
+Cell["The following options can be given: ", "Notes",
+ CellID->1594916193,ExpressionUUID->"b58247fc-1d8c-43be-ab3a-432ca22c8b1c"]
+}, Dynamic[CurrentValue[
+ EvaluationNotebook[], {TaggingRules, "Openers", "NotesSection"}, Closed]]]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  DynamicBox[ToBoxes[
+    If[
+     MatchQ[
+      CurrentValue[
+       EvaluationNotebook[], {
+       TaggingRules, "Openers", "PrimaryExamplesSection"}, Open], 
+      Alternatives[True, Open]], 
+     Style[
+      Graphics[{
+        Thickness[0.18], 
+        RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+        Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+       PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+      0.68 Inherited], 
+     Rotate[
+      Style[
+       Graphics[{
+         Thickness[0.18], 
+         RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+         Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+        PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+       0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]],
+   ImageSizeCache->{
+    13.600000000000001`, {4.251494140625001, 9.348505859375}}]],
+  ExpressionUUID->"09e63bb3-d012-4fd3-a29a-4a21eaa7e7ef"],
+ Cell[BoxData[
+  TemplateBox[{1},
+   "Spacer1"]],ExpressionUUID->"45b75bb0-7401-4852-9c79-5fcee3823666"],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(0)", "ExampleCount",ExpressionUUID->
+  "f7ccb0dd-81e0-46c2-940a-38d9f54f903f"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CacheGraphics->False,
+ CellTags->"PrimaryExamplesSection",
+ CellID->970361056,ExpressionUUID->"fc505de0-988f-401a-ac92-0cc6fc1405ea"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<FaizonZaman`ImageFilterAnalysis`\>\"", 
+  "]"}]], "Input", "ExampleInitialization",
+ CellLabel->"In[1]:=",
+ CellID->939991489,ExpressionUUID->"95035a81-b311-4e1f-b5ea-fa3e8fe801fc"]
+}, Dynamic[CurrentValue[
+ EvaluationNotebook[], {TaggingRules, "Openers", "PrimaryExamplesSection"}, 
+  Closed]]]],
+
+Cell[" ", "FooterCell",ExpressionUUID->"9678b49d-d9b0-41af-a3bc-c5ef4826e5a2"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{900, 830},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"RunImageFilter",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "", "LinkTrails" -> "", 
+  "ExampleCounter" -> 1, 
+  "Openers" -> {
+   "PrimaryExamplesSection" -> Open, "ExampleSection" -> {"0" -> Open}, 
+    "AllOptsTable" -> Closed, "NotesSection" -> Closed}, "NewStyles" -> True, 
+  "CitationPopupData" -> $Failed, "ShowCitation" -> False, "HasOptions" -> 
+  True, "RootCaptions" -> "", "HeaderCoreAreaLink" -> {}, 
+  "Metadata" -> {
+   "built" -> "{2025, 5, 13, 20, 35, 41.393731}", 
+    "history" -> {"XX", "", "", ""}, "context" -> 
+    "FaizonZaman`ImageFilterAnalysis`", "keywords" -> {}, 
+    "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> True,
+     "label" -> "Faizon Zaman/ Image Filter Analysis Symbol", "language" -> 
+    "en", "paclet" -> "FaizonZaman/ImageFilterAnalysis", "status" -> "None", 
+    "summary" -> 
+    "RunImageFilter[filter,image] repeated applies filter to image until a \
+difference threshold is reached. RunImageFilter[filter] represents an \
+operator form that can be applied to an Image.", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "RunImageFilter", "titlemodifier" -> "", 
+    "metadescription" -> "", "windowtitle" -> "RunImageFilter", "type" -> 
+    "Symbol", "uri" -> 
+    "FaizonZaman/ImageFilterAnalysis/ref/RunImageFilter"}},
+CellContext->"Global`",
+FrontEndVersion->"14.2 for Mac OS X ARM (64-bit) (March 16, 2025)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "14.2 for Mac OS X ARM (64-bit) (March 16, 2025)", 
+  StyleDefinitions -> "PrivateStylesheetFormatting.nb"],
+ExpressionUUID->"a0c07347-a29a-4303-b880-296daaa523a9"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[8172, 218, 1437, 38, 34, "PrimaryExamplesSection",ExpressionUUID->"fc505de0-988f-401a-ac92-0cc6fc1405ea",
+   CellTags->"PrimaryExamplesSection",
+   CellID->970361056]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 12170, 316}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[582, 21, 3085, 73, 50, "AnchorBarGrid",ExpressionUUID->"7e06cf55-0e47-4ab4-a0bf-de647b33c81f",
+ CellID->1],
+Cell[3670, 96, 114, 0, 22, "ContextNameCell",ExpressionUUID->"dcd3448d-d07f-4641-88bf-d3c9862062f9"],
+Cell[CellGroupData[{
+Cell[3809, 100, 557, 14, 57, "ObjectNameGrid",ExpressionUUID->"310b77b8-0af2-4c3f-9371-616e7c614fdc"],
+Cell[4369, 116, 1591, 40, 179, "Usage",ExpressionUUID->"347cfc55-d72c-4d72-8756-fedd2444c87e",
+ CellID->1750076215]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5997, 161, 1916, 48, 34, "NotesSection",ExpressionUUID->"c4eed1bf-b56f-439d-a294-4047a27b3c61",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->357822608],
+Cell[7916, 211, 129, 1, 70, "Notes",ExpressionUUID->"b58247fc-1d8c-43be-ab3a-432ca22c8b1c",
+ CellID->1594916193]
+}, Dynamic[CurrentValue[EvaluationNotebook[], {TaggingRules, "Openers", "NotesSection"}, Closed]]]],
+Cell[CellGroupData[{
+Cell[8172, 218, 1437, 38, 34, "PrimaryExamplesSection",ExpressionUUID->"fc505de0-988f-401a-ac92-0cc6fc1405ea",
+ CellTags->"PrimaryExamplesSection",
+ CellID->970361056],
+Cell[9612, 258, 223, 4, 29, "Input",ExpressionUUID->"95035a81-b311-4e1f-b5ea-fa3e8fe801fc",
+ CellID->939991489]
+}, Dynamic[CurrentValue[EvaluationNotebook[], {TaggingRules, "Openers", "PrimaryExamplesSection"}, Closed]]]],
+Cell[9953, 267, 78, 0, 40, "FooterCell",ExpressionUUID->"9678b49d-d9b0-41af-a3bc-c5ef4826e5a2"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
